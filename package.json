@@ -19,5 +19,8 @@
   "dependencies": {
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1"
   }
 }
