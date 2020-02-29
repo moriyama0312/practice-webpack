@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import Test from "./modules/test/index";
 
 window.addEventListener('load', () => {
