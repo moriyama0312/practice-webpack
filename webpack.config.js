@@ -21,7 +21,7 @@ module.exports = [
 		module: {
 			rules: [
 				{
-					test: /\.js$/,
+					test: /\.ts$/,
 					use: [
 						{
 							loader: 'babel-loader',
@@ -36,29 +36,36 @@ module.exports = [
 									]
 								]
 							}
+						},
+						{
+							loader: 'ts-loader'
 						}
-					]
+					],
+					exclude: '/node_modules/'
 				}
 			]
+		},
+		resolve: {
+			extenstions: ['.ts']
 		}
 	},
-	{
-		entry: entries,
-		output: {
-			path: path.resolve(__dirname, '/dist/assets/css'),
-			filename: '[name].css'
-		},
-		module: {
-			rules: [
-				{
-					test: /\.scss$/,
-					use: [
-						{
-							loader: 'sass-loader'
-						}
-					]
-				}
-			]
-		}
-	}
+	// {
+	// 	entry: entries,
+	// 	output: {
+	// 		path: path.resolve(__dirname, '/dist/assets/css'),
+	// 		filename: '[name].css'
+	// 	},
+	// 	module: {
+	// 		rules: [
+	// 			{
+	// 				test: /\.scss$/,
+	// 				use: [
+	// 					{
+	// 						loader: 'sass-loader'
+	// 					}
+	// 				]
+	// 			}
+	// 		]
+	// 	}
+	// }
 ]
