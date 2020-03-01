@@ -12,7 +12,7 @@ entries = glob.sync('**/*.scss', {
 module.exports = [
 	{
 		entry: {
-			'index': 'src/assets/ts/index.ts'
+			'index': './src/assets/ts/index.ts'
 		},
 		output: {
 			path: path.resolve(__dirname, '/dist/assets/js'),
