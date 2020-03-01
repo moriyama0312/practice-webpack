@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist/assets/js/",
 		"noImplicitAny": false,
 		"removeComments": true,
 		"module": "es6",
