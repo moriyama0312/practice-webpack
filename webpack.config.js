@@ -1,7 +1,13 @@
 const path = require('path');
+const glob = require('glob');
 
-const jsEntries = {};
-
+let entries = {};
+entries = glob.sync('**/*.scss', {
+	cwd: './src/sass',
+	ignore: '/core/**.scss'
+}).map((key) => {
+	console.log(key);
+})
 
 module.exports = [
 	{
@@ -30,6 +36,25 @@ module.exports = [
 									]
 								]
 							}
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		entry: entries,
+		output: {
+			path: path.resolve(__dirname, '/dist/assets/css'),
+			filename: '[name].css'
+		},
+		module: {
+			rules: [
+				{
+					test: /\.scss$/,
+					use: [
+						{
+							loader: 'sass-loader'
 						}
 					]
 				}
