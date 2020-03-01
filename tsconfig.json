@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/assets/js/",
+		"noImplicitAny": false,
+		"removeComments": true,
+		"module": "es6",
+		"target": "es5",
+		"allowJs": true
+	}
+}
