@@ -15,7 +15,7 @@ module.exports = [
 			'index': './src/assets/ts/index.ts'
 		},
 		output: {
-			path: path.resolve(__dirname, '/dist/assets/js'),
+			path: path.resolve(__dirname, 'dist/assets/js'),
 			filename: '[name].bundle.js'
 		},
 		module: {
@@ -30,7 +30,7 @@ module.exports = [
 									[
 										'@babel/preset-env',
 										{
-											useBuiltIns: 'entry',
+											useBuiltIns: 'usage',
 											modules: false,
 											corejs: 3
 										}
