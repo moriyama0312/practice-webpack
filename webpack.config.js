@@ -1,13 +1,16 @@
 const path = require('path');
 const glob = require('glob');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let entries = {};
-entries = glob.sync('**/*.scss', {
-	cwd: './src/sass',
-	ignore: '/core/**.scss'
+const cwd = './src/assets/sass';
+glob.sync('**/*.scss', {
+	ignore: '_inc/**/**.scss',
+	cwd: cwd
 }).map((key) => {
-	console.log(key);
-})
+	const {name} = path.parse(key);
+	entries[name] = cwd + '/' + key;
+});
 
 module.exports = [
 	{
@@ -50,23 +53,31 @@ module.exports = [
 			extensions: ['.ts']
 		}
 	},
-	// {
-	// 	entry: entries,
-	// 	output: {
-	// 		path: path.resolve(__dirname, '/dist/assets/css'),
-	// 		filename: '[name].css'
-	// 	},
-	// 	module: {
-	// 		rules: [
-	// 			{
-	// 				test: /\.scss$/,
-	// 				use: [
-	// 					{
-	// 						loader: 'sass-loader'
-	// 					}
-	// 				]
-	// 			}
-	// 		]
-	// 	}
-	// }
-]
+	{
+		entry: entries,
+		output: {
+			path: path.resolve(__dirname, 'dist/assets/css'),
+			filename: '[name].min.css'
+		},
+		module: {
+			rules: [
+				{
+					test: /\.scss$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						{
+							loader: 'css-loader',
+							options: {
+								url: false
+							}
+						},
+						'sass-loader'
+					]
+				}
+			]
+		},
+		plugins: [
+			new MiniCssExtractPlugin()
+		]
+	}
+];
